@@ -1,0 +1,53 @@
+import { Injectable } from '@angular/core';
+import { Bicycle } from './bicycle.model';
+import { Subject } from 'rxjs/Subject';
+
+@Injectable()
+export class BicycleService {
+
+  bikesChanged =  new Subject<Bicycle[]>(); 
+  private bikeCollection: Bicycle[] = [
+    new Bicycle(1000, 'Hybrid', 22, 'assets/images/Hybrid.jpg', "Marin", "Available"),
+    new Bicycle(1001, 'Cruiser', 22, 'assets/images/Cruiser.jpg', "360 Bicycles", "Available"),
+    new Bicycle(1002, 'Mountain', 30, 'assets/images/Mountain.jpg', "DiamondBack", "Available"),
+    new Bicycle(1003, 'Road', 30, 'assets/images/Road.jpg', "Specialized", "Available"),
+    new Bicycle(1004, 'Tandem', 28, 'assets/images/Tandem.jpg', "Raleigh", "Available")
+  ];
+
+  constructor() {}
+
+  setBicycles(bikes: Bicycle[]) {
+      this.bikeCollection = bikes;
+      this.bikesChanged.next(this.bikeCollection.slice()); 
+  }
+
+  getBicycles() {
+      return this.bikeCollection.slice();
+  }
+
+  getBicycle(index: number) {
+      return this.bikeCollection[index];
+  }
+
+  addBicycle(bike: Bicycle) {
+      this.bikeCollection.push(bike);
+      this.bikesChanged.next(this.bikeCollection.slice());
+  }
+
+  updateBicycle(index: number, newBike: Bicycle) {
+      this.bikeCollection[index] = newBike;
+      this.bikesChanged.next(this.bikeCollection.slice());
+  }
+
+  deleteBicycle(index: number) {
+      this.bikeCollection.splice(index, 1);
+      this.bikesChanged.next(this.bikeCollection.slice());
+  }
+
+  generateBikeId() {
+    let lastBike: Bicycle;  
+    lastBike = this.bikeCollection[this.bikeCollection.length -1];
+    return lastBike.ID + 1;
+  }
+
+}

@@ -1,0 +1,23 @@
+<a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+  <div class="float-left">
+    <h4 class="list-group-item-heading">{{ Bike.BikeType}}</h4>
+    <p class="list-group-item-text">
+        Unit Price: ${{ Bike.UnitPrice }}
+        <br/>
+        Manufacturer: {{ Bike.Manufacturer }}
+        <br/>
+        Status: {{ Bike.Status }}
+    </p>
+  </div>
+  <span class="float-right">
+        <img
+          [src]="Bike.ImagePath"
+          alt="{{ Bike.Manufacturer }} {{ Bike.BikeType}} "
+          class="img-responsive"
+          style="max-height: 120px;"/>
+  </span>
+</a>

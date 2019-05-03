@@ -1,0 +1,11 @@
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.buttonSection {
+    border-bottom: 1px solid #b4bcbe;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}

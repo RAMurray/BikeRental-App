@@ -1,0 +1,13 @@
+<div class="row buttonSection">
+  <div class="col-md-12 ">
+    <button class="btn btn-primary" (click)="onNewBicycle()">Add Bicycle</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-bicycle-item
+      *ngFor="let bike of bicycleCollection; let i = index"
+      [Bike]="bike"
+      [index]="i"></app-bicycle-item>
+  </div>
+</div>
