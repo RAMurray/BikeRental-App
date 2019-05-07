@@ -1,0 +1,6 @@
+<h4>Bike Rental History</h4>
+<ul class="list-group list-group-flush">
+    <app-bike-rental-item
+    *ngFor="let rental of bikeRentals"
+    [Rental]="rental"></app-bike-rental-item>
+</ul>

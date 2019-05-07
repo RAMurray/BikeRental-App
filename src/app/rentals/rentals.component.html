@@ -1,15 +1,28 @@
 <div class="row">
   <div class="col-sm-12">
-    <app-rental-edit></app-rental-edit>
-    <hr>
-    <ul class="list-group">
-      <a
-        class="list-group-item"
-        style="cursor: pointer"
-        *ngFor="let rental of rentalCollection; let i = index"
-      >
-        {{rental.RentalDate | date: medium }} for {{ rental.Duration }} Hours
-      </a>
-    </ul>
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Rental Date</th>
+          <th scope="col">Hours</th>
+          <th scope="col">Renter</th>
+          <th scope="col">Bike ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor: pointer" *ngFor="let rental of rentalCollection; let i = index" (click)="onEditItem(i)">
+          <td>{{ rental.RentalID }}</td>
+          <td>{{rental.RentalDate | date: medium }}</td>
+          <td>{{ rental.Duration }}</td>
+          <td>{{ rental.FirstName }} {{ rental.LastName }}</td>
+          <td>{{ rental.BikeID }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-12">
+      <hr>
+      <app-rental-edit></app-rental-edit>
   </div>
 </div>

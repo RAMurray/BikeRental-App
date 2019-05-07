@@ -1,0 +1,98 @@
+<!-- <a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="list-group-item clearfix"
+  [ngClass]="getStatusClasses(Bike.Status)">
+  <div class="float-left">
+    <h4 class="list-group-item-heading">{{ Bike.BikeType}}</h4>
+    <p class="list-group-item-text">
+        Unit Price: ${{ Bike.UnitPrice }}
+        <br/>
+        Manufacturer: {{ Bike.Manufacturer }}
+        <br/>
+        Status: {{ Bike.Status }}
+    </p>
+  </div>
+  <span class="float-right">
+        <img
+          [src]="Bike.ImagePath"
+          alt="{{ Bike.Manufacturer }} {{ Bike.BikeType}} "
+          class="img-responsive"
+          style="max-height: 120px;"/>
+  </span>
+</a> -->
+<li class="list-group-item">
+  <div *ngIf="!isExpanded">
+    <div class="row">
+      <div class="col-1">
+        <img style="cursor: pointer;" src="assets/images/expand-arrow.png" (click)="onExpandItem()"/>
+      </div>
+      <div class="col-4">
+        <b>Date:</b> {{Rental.RentalDate | date: short }}
+      </div>
+      <div class="col-3">
+        <b>For</b> {{Rental.Duration}} Hours
+      </div>
+        <div class="col-4">
+          <b>By</b> {{Rental.FirstName}} {{Rental.LastName}}
+        </div>
+    </div>
+  </div>
+  <div *ngIf="isExpanded">
+    <div class="row">
+      <div class="col-1">
+        <img style="cursor: pointer;" src="assets/images/collapse-arrow.png" (click)="onExpandItem()"/>
+      </div>
+      <div class="col-8">
+        <h5>Rental Information</h5>
+      </div>
+      <div class="col-3">
+        # {{Rental.RentalID}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <b>Rental Date</b> 
+      </div>
+      <div class="col-3">
+          {{Rental.RentalDate | date: medium }}
+      </div>
+      <div class="col-2">
+          <b>Duration:</b>
+      </div>
+      <div class="col-3">
+          {{Rental.Duration}} <small>Hours</small>
+      </div>
+      <div class="col-3">
+          <b>Amnt Due</b> 
+        </div>
+        <div class="col-3">
+          ${{Rental.Amount }}
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-12 renterInformation">
+        Renter Information
+      </div>
+      <div class="col-2">
+          <b>Name</b>
+      </div>
+      <div class="col-4">
+          {{Rental.LastName }}, {{Rental.FirstName }}
+      </div>
+      <div class="col-3">
+        <b>Paymethod</b> 
+      </div>
+      <div class="col-3">
+        {{Rental.Paymethod }}
+      </div>
+      <div class="col-3">
+        <b>Phone #</b> 
+      </div>
+      <div class="col-4">
+        {{Rental.PhoneNumber }}
+      </div>
+    </div>
+  </div>
+</li>

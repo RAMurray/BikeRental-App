@@ -10,6 +10,13 @@ export class BicycleItemComponent implements OnInit {
   @Input() Bike: Bicycle;
   @Input() index: number;
   
+  getStatusClasses(status: string) {
+    return {
+      'list-group-item-warning': status === 'Rented',
+      'list-group-item-danger': status === 'Maintenance'
+    };
+  }
+
   constructor() { }
 
   ngOnInit() {

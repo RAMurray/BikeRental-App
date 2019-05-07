@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Bicycle } from '../bicycle.model';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { BicycleService } from '../bicycle.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -12,6 +12,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class BicycleListComponent implements OnInit, OnDestroy {
   bicycleCollection: Bicycle[];
   subscription: Subscription;
+  
+  filteredBikeType:string = 'All';
+  filteredStatus: string = 'All';
 
   constructor(private bikeService: BicycleService,
     private router: Router,

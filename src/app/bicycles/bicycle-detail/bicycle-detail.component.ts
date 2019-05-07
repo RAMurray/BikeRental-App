@@ -34,5 +34,14 @@ export class BicycleDetailComponent implements OnInit {
     this.bikeService.deleteBicycle(this.id);
     this.router.navigate(['/bicycles']);
   }
+  
+  getStatusClasses(status: string) {
+    return {
+      'badge-success': status === 'Available',
+      'badge-warning': status === 'Rented',
+      'badge-danger': status === 'Maintenance'
+    };
+  }
+
 
 }

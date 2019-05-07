@@ -24,15 +24,19 @@
     <div class="row">
       <div class="col-sm-12">
         <h2>{{Bike.BikeType}} Bike</h2>
-        <small>{{Bike.Manufacturer}}</small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4><span class="badge badge-primary" [ngClass]="getStatusClasses(Bike.Status)">{{Bike.Status}}</span></h4>
       </div>
     </div>
     <div class="row">
       <div style="font-weight: bold" class="col-sm-2">
-        Status:
+        Brand:
       </div>
       <div class="col-sm-10">
-        {{Bike.Status}}
+        {{Bike.Manufacturer}}
       </div>
     </div>
     <div class="row">
@@ -41,6 +45,11 @@
       </div>
       <div class="col-sm-10">
         ${{Bike.UnitPrice}} per Hour
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <app-bike-rentals [BikeId]="Bike.ID"></app-bike-rentals>
       </div>
     </div>
   </div>

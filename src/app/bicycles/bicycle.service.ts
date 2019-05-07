@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Bicycle } from './bicycle.model';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class BicycleService {
@@ -27,6 +27,13 @@ export class BicycleService {
 
   getBicycle(index: number) {
       return this.bikeCollection[index];
+  }
+
+  getBicycleById(bikeId: number) {
+    for(let bike of this.bikeCollection ) {
+      if(bike.ID == bikeId)
+        return bike;
+    }
   }
 
   addBicycle(bike: Bicycle) {

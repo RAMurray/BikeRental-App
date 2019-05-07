@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './core/home/home.component';
@@ -18,6 +19,9 @@ import { BicycleService } from './bicycles/bicycle.service';
 import { RentalsComponent } from './rentals/rentals.component';
 import { RentalEditComponent } from './rentals/rental-edit/rental-edit.component';
 import { RentalService } from './rentals/rental.service';
+import { FilterPipe } from './core/filter.pipe';
+import { BikeRentalsComponent } from './rentals/bike-rentals/bike-rentals.component';
+import { BikeRentalItemComponent } from './rentals/bike-rentals/bike-rental-item/bike-rental-item.component';
 
 
 
@@ -33,14 +37,18 @@ import { RentalService } from './rentals/rental.service';
     BicycleDetailComponent,
     BicycleItemComponent,
     RentalsComponent,
-    RentalEditComponent
+    RentalEditComponent,
+    FilterPipe,
+    BikeRentalsComponent,
+    BikeRentalItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [BicycleService,RentalService,DatePipe],
   bootstrap: [AppComponent]

@@ -2,7 +2,8 @@
   style="cursor: pointer;"
   [routerLink]="[index]"
   routerLinkActive="active"
-  class="list-group-item clearfix">
+  class="list-group-item clearfix"
+  [ngClass]="getStatusClasses(Bike.Status)">
   <div class="float-left">
     <h4 class="list-group-item-heading">{{ Bike.BikeType}}</h4>
     <p class="list-group-item-text">

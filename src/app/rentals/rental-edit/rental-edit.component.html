@@ -1,3 +1,101 @@
-<p>
-  rental-edit works!
-</p>
+<div class="container" *ngIf="editMode">
+  <form [formGroup]="rentalForm" (ngSubmit)="onSubmit()">
+  <div class="form-group row">
+    <label for="RentalId" class="col-sm-1 col-form-label">ID:</label>
+    <div class="col-sm-5">
+        <input type="text" readonly class="form-control-plaintext" id="ID" formControlName="RentalID">
+    </div> 
+    <div class="col-sm-2 ml-auto">
+      <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!rentalForm.valid">Save</button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-sm-4">
+          <div class="form-group row">
+              <label for="RentalDate" class="col-5 col-form-label">Rental date</label>
+              <div class="col-7">
+                  <input type="text" readonly class="form-control-plaintext" id="RentalDate" formControlName="RentalDate">
+                <!-- <div class="input-group">
+                    <input class="form-control"  name="dp" formControlName="RentalDate" ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                          <img src="assets/images/calendar-icon.png" alt="calendar icon" />
+                        </button>
+                    </div>
+                  </div> -->
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group row">
+            <label for="Duration" class="col-6 col-form-label">Duration <small>(hours)</small></label>
+            <div class="col-6">
+                <input type="number" id="Duration" class="form-control" name="Duration" formControlName="Duration" 
+                (change)="onDurationChanged($event.target.value)" required pattern="^[1-9]+[0-9]*$">
+            </div>
+        </div>  
+      </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+          <input type="text" class="form-control" formControlName="FirstName" placeholder="First name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" formControlName="LastName"  placeholder="Last name">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" formControlName="PhoneNumber"  placeholder="(xxx) xxx-xxxx">
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+          <div class="form-group row">
+              <label for="RentalDate" class="col-5 col-form-label">Payment Method</label>
+              <div class="col-7">
+                <select class="form-control" id="Paymethod" formControlName="Paymethod">
+                    <option>CreditCard</option>
+                    <option>DebitCard</option>
+                    <option>Cash</option>
+                    <option>PayPal</option>
+                    <option>ApplePay</option>
+                  </select>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group row">
+            <label for="Amount" class="col-sm-3 col-form-label">Total Amount:</label>
+            <div class="col-sm-5 input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend">
+                  <div class="input-group-text">$</div>
+              </div>
+              <input type="text" class="form-control" id="Amount" formControlName="Amount">
+            </div> 
+        </div>  
+      </div>
+    </div>
+    <div class="row bikeInformation" *ngIf="rentedBikeId > 0">
+      <div class="col-sm-3">
+          <h3>Bike Information</h3>
+      </div>
+      <label for="BikeId" class="col-sm-1 col-form-label"><b>Bike #</b></label> 
+      <div class="col-sm-8">
+        <input type="text" id="BikeId" readonly class="form-control-plaintext" formControlName="BikeID">
+      </div>
+      <div class="col-sm-3">
+          <img
+          [src]="rentedBike.ImagePath"
+          alt="{{ rentedBike.Manufacturer }} {{ rentedBike.BikeType}} "
+          class="img-responsive"
+          style="max-height: 120px;"/>
+      </div>
+      <div class="col-sm">
+        <ul class="list-unstyled">
+          <li><b>Bike</b>: {{rentedBike.BikeType}}, {{rentedBike.Manufacturer}} </li>
+          <li><b>Cost per hour:</b>:  ${{rentedBike.UnitPrice}}</li>
+        </ul>
+      </div>
+    </div>
+  </form>
+</div>

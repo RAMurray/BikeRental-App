@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Rental } from './rental.model';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { RentalService } from './rental.service';
 
 @Component({
@@ -26,8 +26,11 @@ export class RentalsComponent implements OnInit, OnDestroy {
         this.rentalCollection = rentals;
       }
     )
+  }
 
-
+  onEditItem(index: number) {
+    console.log('Editing rental at index: ' + index);
+    this.rentalService.editingRental.next(index);
   }
 
   ngOnDestroy() {

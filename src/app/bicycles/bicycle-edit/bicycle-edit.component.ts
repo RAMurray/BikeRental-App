@@ -28,6 +28,19 @@ export class BicycleEditComponent implements OnInit {
     )
   }
 
+  onSubmit() {
+    if(this.editMode)
+      this.bikeService.updateBicycle(this.id, this.bikeForm.value);
+    else
+      this.bikeService.addBicycle(this.bikeForm.value);
+
+    this.onCancel();
+  }
+
+  onCancel() {
+    this.router.navigate(['../'], {relativeTo: this.route});
+  }
+
   private initForm() {
     let nId = this.bikeService.generateBikeId();
     let bikeType = '';

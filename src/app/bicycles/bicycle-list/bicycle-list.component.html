@@ -5,8 +5,36 @@
 </div>
 <div class="row">
   <div class="col-md-12">
+    <h4>Filters</h4>
+  </div>
+</div>
+<div class="row filterSection">
+  <div class="col-md-6">
+      <b>Bike Type</b>
+    <select class="form-control" [(ngModel)]="filteredBikeType">
+      <option selected>All</option>
+      <option>Cruiser</option>
+      <option>Electric</option>
+      <option>Hybrid</option>
+      <option>Mountain</option>
+      <option>Road</option>
+      <option>Tandem</option>
+    </select>
+  </div>
+  <div class="col-md-6">
+    <b>Status</b>:
+    <select class="form-control" [(ngModel)]="filteredStatus">
+        <option selected>All</option>
+        <option>Available</option>
+        <option>Rented</option>
+        <option>Maintenance</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
     <app-bicycle-item
-      *ngFor="let bike of bicycleCollection; let i = index"
+      *ngFor="let bike of bicycleCollection | filter:filteredBikeType:'BikeType' | filter:filteredStatus:'Status'; let i = index"
       [Bike]="bike"
       [index]="i"></app-bicycle-item>
   </div>
