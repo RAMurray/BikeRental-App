@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Bicycle } from '../bicycle.model';
 import { BicycleService } from '../bicycle.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-bicycle-detail',
   templateUrl: './bicycle-detail.component.html',
   styleUrls: ['./bicycle-detail.component.css']
 })
-export class BicycleDetailComponent implements OnInit {
-
+export class BicycleDetailComponent implements OnInit, OnDestroy {
   Bike: Bicycle;
   id: number;
+
+  rentalSub: Subscription;
+  newBikeRental: boolean = false;
 
   constructor(private bikeService: BicycleService,
               private route: ActivatedRoute,
@@ -24,6 +27,15 @@ export class BicycleDetailComponent implements OnInit {
         this.Bike = this.bikeService.getBicycle(this.id);
       }
     )
+    this.bikeService.newBikeRental.subscribe(
+      (addingRental: boolean) => {
+        console.log('Subscription: Is adding Rental:' + addingRental);
+        if(addingRental)
+          this.newBikeRental = true;
+        else
+          this.newBikeRental = false;
+      }
+    )
   }
 
   onEditBicycle() {
@@ -34,6 +46,10 @@ export class BicycleDetailComponent implements OnInit {
     this.bikeService.deleteBicycle(this.id);
     this.router.navigate(['/bicycles']);
   }
+
+  onNewBikeRental() {
+    this.newBikeRental = !this.newBikeRental;
+  }
   
   getStatusClasses(status: string) {
     return {
@@ -41,6 +57,10 @@ export class BicycleDetailComponent implements OnInit {
       'badge-warning': status === 'Rented',
       'badge-danger': status === 'Maintenance'
     };
+  }
+
+  ngOnDestroy() {
+    this.rentalSub.unsubscribe();
   }
 
 

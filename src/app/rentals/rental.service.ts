@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Rental } from './rental.model';
 import { Subject } from 'rxjs';
+import { BicycleService } from '../bicycles/bicycle.service';
 
 @Injectable()
 export class RentalService {
   rentalsChanged = new Subject<Rental[]>();
   editingRental = new Subject<number>();
+
   private rentalCollection: Rental[] = [
     new Rental(1000, 1000, '2019-04-15', 3, 45, 'Kyle', 'Davis', '555-228-4521', 'CreditCard'),
     new Rental(1001, 1001, '2019-04-15', 2, 30, 'Karen', 'Taylor', '555-555-8243', 'Cash'),

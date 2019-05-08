@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Bicycle } from './bicycle.model';
 import { Subject } from 'rxjs';
+import { RentalService } from '../rentals/rental.service';
 
 @Injectable()
 export class BicycleService {
-
-  bikesChanged =  new Subject<Bicycle[]>(); 
+  bikesChanged =  new Subject<Bicycle[]>();
+  newBikeRental = new Subject<boolean>(); 
   private bikeCollection: Bicycle[] = [
     new Bicycle(1000, 'Hybrid', 22, 'assets/images/Hybrid.jpg', "Marin", "Available"),
     new Bicycle(1001, 'Cruiser', 22, 'assets/images/Cruiser.jpg', "360 Bicycles", "Available"),

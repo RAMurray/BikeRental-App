@@ -7,7 +7,7 @@
           <button class="btn btn-danger" (click)="onDeleteVehicle()">Delete</button>
       </div> -->
       <div class="col-sm-4">
-          <div class="btn-group" role="group" aria-label="Vehicle Actions">
+          <div class="btn-group" role="group" aria-label="Bike Actions">
               <button type="button" class="btn btn-secondary" (click)="onEditBicycle()">Edit</button>
               <button type="button" class="btn btn-danger" (click)="onDeleteBicycle()">Delete</button>
             </div>
@@ -47,9 +47,20 @@
         ${{Bike.UnitPrice}} per Hour
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-12">
+    <div class="row rentalSection" *ngIf="!newBikeRental">
+      <div class="col-6">
+          <h4>Bike Rental History</h4>
+      </div>
+      <div class="col-6">
+          <button class="btn btn-primary" (click)="onNewBikeRental()">Create Rental</button>
+      </div>
+      <div class="col-12">
         <app-bike-rentals [BikeId]="Bike.ID"></app-bike-rentals>
+      </div>
+    </div>
+    <div class="row" *ngIf="newBikeRental">
+      <div class="col-12" >
+        <app-bike-rental-new></app-bike-rental-new>
       </div>
     </div>
   </div>

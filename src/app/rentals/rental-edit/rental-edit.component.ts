@@ -5,7 +5,7 @@ import { RentalService } from '../rental.service';
 import { BicycleService } from '../../bicycles/bicycle.service';
 import { Subscription } from 'rxjs';
 import { Rental } from '../rental.model';
-import { Bicycle } from 'src/app/bicycles/bicycle.model';
+import { Bicycle } from '../../bicycles/bicycle.model';
 import { DatePipe } from '@angular/common';
 
 @Component({

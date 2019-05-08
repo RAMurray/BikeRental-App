@@ -22,6 +22,7 @@ import { RentalService } from './rentals/rental.service';
 import { FilterPipe } from './core/filter.pipe';
 import { BikeRentalsComponent } from './rentals/bike-rentals/bike-rentals.component';
 import { BikeRentalItemComponent } from './rentals/bike-rentals/bike-rental-item/bike-rental-item.component';
+import { BikeRentalNewComponent } from './rentals/bike-rentals/bike-rental-new/bike-rental-new.component';
 
 
 
@@ -40,7 +41,8 @@ import { BikeRentalItemComponent } from './rentals/bike-rentals/bike-rental-item
     RentalEditComponent,
     FilterPipe,
     BikeRentalsComponent,
-    BikeRentalItemComponent
+    BikeRentalItemComponent,
+    BikeRentalNewComponent
   ],
   imports: [
     BrowserModule,
