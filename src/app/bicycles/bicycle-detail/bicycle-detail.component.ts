@@ -9,11 +9,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './bicycle-detail.component.html',
   styleUrls: ['./bicycle-detail.component.css']
 })
-export class BicycleDetailComponent implements OnInit, OnDestroy {
+export class BicycleDetailComponent implements OnInit {
   Bike: Bicycle;
   id: number;
-
-  rentalSub: Subscription;
   newBikeRental: boolean = false;
 
   constructor(private bikeService: BicycleService,
@@ -58,10 +56,5 @@ export class BicycleDetailComponent implements OnInit, OnDestroy {
       'badge-danger': status === 'Maintenance'
     };
   }
-
-  ngOnDestroy() {
-    this.rentalSub.unsubscribe();
-  }
-
 
 }

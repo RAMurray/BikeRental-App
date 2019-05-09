@@ -4,10 +4,26 @@
           <a routerLink="/" class="navbar-brand">Bike Rental</a>
       </div>
       <div class="collapse navbar-collapse">
-         <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/bikes">Bicycles</a></li>
             <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/rentals">Rentals</a></li>
-          </ul>
+        </ul>
+        <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Manage Data</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem (click)="onSaveData()">Save Data</button>
+                <button ngbDropdownItem (click)="onFetchData()">Fetch Data</button>
+            </div>
+        </div>
+        <!-- <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" (click)="onSaveData()">Save Date</a>
+              <a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
+            </div>
+          </li>
+        </ul> -->
           <!-- <ul class="nav navbar-nav navbar-right">
               <ng-template [ngIf]="!oAuthService.isAuthenticated()">
                   <li><a routerLink="/signup">Register</a></li>

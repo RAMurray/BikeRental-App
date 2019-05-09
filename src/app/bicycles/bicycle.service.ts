@@ -8,11 +8,11 @@ export class BicycleService {
   bikesChanged =  new Subject<Bicycle[]>();
   newBikeRental = new Subject<boolean>(); 
   private bikeCollection: Bicycle[] = [
-    new Bicycle(1000, 'Hybrid', 22, 'assets/images/Hybrid.jpg', "Marin", "Available"),
-    new Bicycle(1001, 'Cruiser', 22, 'assets/images/Cruiser.jpg', "360 Bicycles", "Available"),
-    new Bicycle(1002, 'Mountain', 30, 'assets/images/Mountain.jpg', "DiamondBack", "Available"),
-    new Bicycle(1003, 'Road', 30, 'assets/images/Road.jpg', "Specialized", "Available"),
-    new Bicycle(1004, 'Tandem', 28, 'assets/images/Tandem.jpg', "Raleigh", "Available")
+    new Bicycle(1000, 'Hybrid', 18, 'assets/images/Hybrid.jpg', "Marin", "Available"),
+    new Bicycle(1001, 'Cruiser', 18, 'assets/images/Cruiser.jpg', "360 Bicycles", "Available"),
+    new Bicycle(1002, 'Mountain', 25, 'assets/images/Mountain.jpg', "DiamondBack", "Available"),
+    new Bicycle(1003, 'Road', 25, 'assets/images/Road.jpg', "Specialized", "Available"),
+    new Bicycle(1004, 'Tandem', 24, 'assets/images/Tandem.jpg', "Raleigh", "Available")
   ];
 
   constructor() {}

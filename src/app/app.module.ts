@@ -23,6 +23,9 @@ import { FilterPipe } from './core/filter.pipe';
 import { BikeRentalsComponent } from './rentals/bike-rentals/bike-rentals.component';
 import { BikeRentalItemComponent } from './rentals/bike-rentals/bike-rental-item/bike-rental-item.component';
 import { BikeRentalNewComponent } from './rentals/bike-rentals/bike-rental-new/bike-rental-new.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { DataStorageService } from './core/data-storage.service';
 
 
 
@@ -42,7 +45,9 @@ import { BikeRentalNewComponent } from './rentals/bike-rentals/bike-rental-new/b
     FilterPipe,
     BikeRentalsComponent,
     BikeRentalItemComponent,
-    BikeRentalNewComponent
+    BikeRentalNewComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,7 @@ import { BikeRentalNewComponent } from './rentals/bike-rentals/bike-rental-new/b
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [BicycleService,RentalService,DatePipe],
+  providers: [BicycleService,RentalService,DatePipe,DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
