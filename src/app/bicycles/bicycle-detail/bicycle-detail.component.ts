@@ -42,7 +42,7 @@ export class BicycleDetailComponent implements OnInit {
 
   onDeleteBicycle() {
     this.bikeService.deleteBicycle(this.id);
-    this.router.navigate(['/bicycles']);
+    this.router.navigate(['/bikes']);
   }
 
   onNewBikeRental() {
