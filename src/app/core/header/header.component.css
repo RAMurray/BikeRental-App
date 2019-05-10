@@ -1,0 +1,10 @@
+h1.appTitle {
+    font-family: 'Chunkfive', 'arial', sans-serif;
+    color: #EFC94C;
+}
+
+a.appTitle {
+    font-family: 'Montserrat', sans-serif;
+    color: #2C3E50;
+    font-size: 1.5rem;
+}
