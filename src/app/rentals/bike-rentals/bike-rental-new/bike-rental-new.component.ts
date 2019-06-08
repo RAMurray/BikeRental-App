@@ -19,7 +19,7 @@ export class BikeRentalNewComponent implements OnInit {
   sub: Subscription;
   editedRentalIndex: number;
   editedRental: Rental;
-  
+  bikeIndex: number;
 
   constructor(private datePipe: DatePipe,
               private router: Router,
@@ -31,6 +31,7 @@ export class BikeRentalNewComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         const index: number = +params['id'];
+        this.bikeIndex = index;
         this.Bike = this.bikeService.getBicycle(index);
         this.initForm();
       }
@@ -75,8 +76,12 @@ export class BikeRentalNewComponent implements OnInit {
     const sRentalDate: string = this.rentalForm.value['RentalDate'].year + '-' + this.rentalForm.value['RentalDate'].month + '-' + this.rentalForm.value['RentalDate'].day;
     console.log('Rental Date day:' + sRentalDate);
     this.rentalForm.value['RentalDate'] = sRentalDate;
-    
     this.rentalService.addRental(this.rentalForm.value);
+
+    // Change Bike's status
+    this.Bike.Status = "Rented";
+    this.bikeService.updateBicycle(this.bikeIndex, this.Bike);
+
     this.onCancel();
   }
 
